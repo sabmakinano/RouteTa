@@ -1,0 +1,277 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --orange: #F97316;
+    --orange-dark: #EA580C;
+    --orange-light: #FED7AA;
+    --orange-glow: rgba(249, 115, 22, 0.3);
+    --white: #FFFFFF;
+    --off-white: #FFF7ED;
+    --gray-light: #F5F5F5;
+    --gray-mid: #D4D4D4;
+    --gray-dark: #404040;
+    --black: #171717;
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.10);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --header-h: 72px;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+
+body {
+    min-height: 100vh;
+    background: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--orange);
+    box-shadow: 0 2px 20px rgba(249, 115, 22, 0.15);
+    flex-shrink: 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: var(--header-h);
+    padding: 0 32px;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: var(--header-h);
+    padding: 0 32px;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 16px;
+    }
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logoHeader {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+}
+
+.headerTitle {
+    height: 36px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.navbar a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray-dark);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    transition: background 0.18s, color 0.18s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: var(--orange);
+    color: var(--white);
+}
+
+.a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* ===== PAGE HEADER BAR ===== */
+.page-header {
+    background: linear-gradient(135deg, #1a0800 0%, #7c2d12 100%);
+    padding: 40px 32px 36px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 50px;
+    background: var(--off-white);
+    clip-path: polygon(0 100%, 100% 30%, 100% 100%);
+}
+
+.page-header-dots {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(circle, rgba(249,115,22,0.2) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.page-header-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange-light);
+    background: rgba(249,115,22,0.2);
+    border: 1px solid rgba(249,115,22,0.35);
+    padding: 4px 14px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(34px, 6vw, 60px);
+    font-weight: 800;
+    color: var(--white);
+    margin: 0;
+    line-height: 1;
+}
+
+.page-title span { color: var(--orange); }
+
+.page-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    margin: 8px 0 0;
+    font-weight: 500;
+}
+/* ===== MAP PANEL ===== */
+.map-section {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 32px auto;
+    padding: 0 16px;
+    max-width: 1030px;
+    border-radius: var(--radius);
+    background-color: rgb(255, 145, 0);
+    height: 100%;
+    box-shadow: 0 0 12px var(--shadow-card) var(--orange-glow);
+}
+
+.map-iframe {
+    border: none;
+    width: 100%;
+    height: 450px;
+    border-radius: var(--radius);
+}
+
+.button_map {
+    margin-top: auto;
+    padding: auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--orange);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+.button_map:hover {
+    box-shadow: 0 0 12px var(--orange-glow);
+    color: var(--white);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--black);
+    color: var(--gray-mid);
+    text-align: center;
+    font-size: 13px;
+    padding: 24px;
+    margin-top: auto;
+}
+
+footer span { color: var(--orange); font-weight: 600; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .jeepneys-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 16px;
+    }
+    .navbar {
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 6px;
+    }
+    .navbar a { font-size: 12px; padding: 6px 10px; }
+    .logoHeader { width: 34px; height: 34px; }
+    .headerTitle { height: 26px; }
+
+    .page-header { padding: 30px 16px 40px; }
+    main { padding: 32px 16px 60px; }
+}

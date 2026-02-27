@@ -1,0 +1,398 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --orange: #F97316;
+    --orange-dark: #EA580C;
+    --orange-light: #FED7AA;
+    --orange-glow: rgba(249, 115, 22, 0.3);
+    --white: #FFFFFF;
+    --off-white: #FFF7ED;
+    --gray-light: #F5F5F5;
+    --gray-mid: #D4D4D4;
+    --gray-dark: #404040;
+    --black: #171717;
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.10);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --header-h: 72px;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--orange);
+    box-shadow: 0 2px 20px rgba(249, 115, 22, 0.15);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: var(--header-h);
+    padding: 0 32px;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logoHeader {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+}
+
+.headerTitle {
+    height: 36px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.navbar a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray-dark);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    transition: background 0.18s, color 0.18s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* ===== PAGE HEADER BAR ===== */
+.page-header {
+    background: linear-gradient(135deg, #1a0800 0%, #7c2d12 100%);
+    padding: 40px 32px 36px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 50px;
+    background: var(--off-white);
+    clip-path: polygon(0 100%, 100% 30%, 100% 100%);
+}
+
+.page-header-dots {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(circle, rgba(249,115,22,0.2) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.page-header-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange-light);
+    background: rgba(249,115,22,0.2);
+    border: 1px solid rgba(249,115,22,0.35);
+    padding: 4px 14px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(34px, 6vw, 60px);
+    font-weight: 800;
+    color: var(--white);
+    margin: 0;
+    line-height: 1;
+}
+
+.page-title span { color: var(--orange); }
+
+.page-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    margin: 8px 0 0;
+    font-weight: 500;
+}
+
+/* ===== CITIES LAYOUT ===== */
+main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 24px 80px;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+/* ===== CITY CARD ===== */
+.city-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    width: 280px;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    animation: fadeUp 0.4s ease both;
+    position: relative;
+}
+
+.city-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.city-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(249, 115, 22, 0.2);
+    border-color: var(--orange-light);
+}
+
+.city-card:hover::before { transform: scaleX(1); }
+
+/* Featured / center city card */
+.city-card.featured {
+    width: 320px;
+    border-color: var(--orange-light);
+    box-shadow: 0 8px 40px rgba(249, 115, 22, 0.2);
+    animation-delay: 0.1s;
+}
+
+.city-card.featured::before { 
+    transform: scaleX(1); 
+}
+
+.city-card.left  { 
+    animation-delay: 0.05s; 
+}
+.city-card.right { 
+    animation-delay: 0.15s;
+ }
+
+/* Card header */
+.city-card-header {
+    background-color:rgb(145, 66, 2);
+    padding: 20px 22px 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.city-card.featured .city-card-header {
+    background: linear-gradient(135deg, var(--orange-dark) 0%, var(--orange) 100%);
+}
+
+.city-card-header-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+}
+
+.city-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+}
+
+.city-name {
+    position: relative;
+    z-index: 1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+}
+
+.city-card.featured .city-name { font-size: 30px; }
+
+/* Card body */
+.city-card-body {
+    padding: 18px 22px 22px;
+    width: 100%;
+    height: auto;
+}
+
+.routes-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a3a3a3;
+    margin-bottom: 12px;
+}
+
+.routes-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.routes-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--black);
+    font-family: 'Barlow', sans-serif;
+}
+
+.route-pill {
+    display: inline-block;
+    background: var(--orange-dark);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    min-width: 42px;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--black);
+    color: var(--gray-mid);
+    text-align: center;
+    font-size: 13px;
+    padding: 24px;
+}
+
+footer span { color: var(--orange); font-weight: 600; }
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 16px;
+    }
+    .navbar {
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 6px;
+    }
+    .navbar a { font-size: 12px; padding: 6px 10px; }
+    .logoHeader { width: 34px; height: 34px; }
+    .headerTitle { height: 26px; }
+
+    main {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 16px 60px;
+        gap: 20px;
+    }
+
+    .city-card,
+    .city-card.featured {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .page-header { padding: 30px 16px 40px; }
+}
+
+@media (max-width: 480px) {
+    .navbar a { font-size: 11px; padding: 5px 8px; }
+    .city-name { font-size: 22px; }
+    .city-card.featured .city-name { font-size: 24px; }
+}

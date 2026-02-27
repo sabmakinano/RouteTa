@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html, body { margin:0; height:100%; }
+
+header {
+  height: 60px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.red {
+  width: 65%;
+  background: red;
+}
+
+.blue {
+  width: 35%;
+  background: blue;
+}
+</style>
+</head>
+
+<body>
+  <header>My Header</header>
+
+  <div class="container">
+    <div class="red"></div>
+    <div class="blue"></div>
+  </div>
+</body>
+</html>

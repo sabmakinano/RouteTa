@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransParent — Cebu Route Finder</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="thumbnails/transparent2.ico">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="Index.html" class="logo-link">
+            <img class="logoHeader" src="thumbnails/logo2.png" alt="Logo">
+            <img class="headerTitle" src="thumbnails/logo_text.png" alt="TransParent">
+        </a>
+        <nav class="navbar">
+            <a class="navbar_text active" href="Index.html">Home</a>
+            <a class="navbar_text" href="jeepneys.html">Jeepneys</a>
+            <a class="navbar_text" href="cities.html">Cities</a>
+            <a class="navbar_text" href="map.html">Map</a>
+            <a class="navbar_text" href="About.html">About</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO + SEARCH -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Cebu Public Transport Guide</div>
+        <h1 class="hero-title">Find Your <span>Route</span></h1>
+        <p class="hero-subtitle">Jeepney routes across Cebu City fast, simple, free.</p>
+
+        <div class="search-card">
+            <div class="search-card-label">Where are you going?</div>
+            <div class="search-row">
+                <div class="search-input-wrap">
+                    <input class="search-bar1" type="text" id="from" placeholder="From (e.g. Talisay)">
+                </div>
+                <span class="swap-icon">→</span>
+                <div class="search-input-wrap">
+                    <input class="search-bar2" type="text" id="to" placeholder="To (e.g. Cebu)">
+                </div>
+                <button class="button_route" onclick="search()">Find Route</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main>
+    <div class="inner">
+
+        <!-- STATS -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Active Routes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">Free</div>
+                <div class="stat-label">Always Free</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Available</div>
+            </div>
+        </div>
+
+        <!-- VIDEO PREVIEW -->
+        <div class="section-tag">Overview</div>
+        <h2 class="section-title">Explore Cebu's Transport Network</h2>
+
+        <div class="video-wrap">
+            <img src="thumbnails/map.png" >
+            <!-- <video autoplay muted loop playsinline>
+                <source src="thumbnails/background_video.mp4" type="video/mp4">
+            </video> -->
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 <span>TransParent</span> — Making Cebu transit easier, one route at a time.
+</footer>
+
+<script>
+    function search() {
+        const from = document.getElementById("from").value.toLowerCase().trim();
+        const to = document.getElementById("to").value.toLowerCase().trim();
+        if (from === "talisay" && to === "cebu") {
+            window.location.href = "choosen_jeepney.html";
+        } else if (from === "cebu" && to === "talisay") {
+            window.location.href = "page3.html";
+        } else {
+            alert("Route not found. Try: Talisay → Cebu");
+        }
+    }
+
+    // Allow Enter key to trigger search
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") search();
+    });
+</script>
+</body>
+</html>
