@@ -121,16 +121,16 @@ header {
     position: absolute;
     bottom: -2px;
     left: 0; right: 0;
-    height: 50px;
+    height: 10px;
     background: var(--off-white);
-    clip-path: polygon(0 100%, 100% 30%, 100% 100%);
+    /* clip-path: polygon(0 100%, 100% 30%, 100% 100%); */
 }
 
 .page-header-dots {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-image: radial-gradient(circle, rgba(249,115,22,0.2) 1.5px, transparent 1.5px);
+    /* background-image: radial-gradient(circle, rgba(249,115,22,0.2) 1.5px, transparent 1.5px); */
     background-size: 22px 22px;
     opacity: 0.6;
     pointer-events: none;
@@ -202,12 +202,14 @@ main {
     animation: fadeUp 0.4s ease both;
     position: relative;
     overflow: hidden;
+    height: 100%;   /* reason of fix size height */
 }
 
 /* orange accent top bar */
 .jeepney-box::before {
     content: '';
     position: absolute;
+
     top: 0; left: 0; right: 0;
     height: 4px;
     background: var(--orange);
@@ -280,7 +282,7 @@ main {
     border: 2px solid var(--white);
 }
 
-.jeepney-route li:first-child::before { background: var(--orange-dark); }
+.jeepney-route li:first-child::before { background: #16a34a; }
 .jeepney-route li:last-child::before  { background: #16a34a; }
 
 /* ===== FOOTER ===== */

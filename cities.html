@@ -6,6 +6,11 @@
     <title>RouteTa — Cities</title>
     <link rel="icon" type="image/png" href="thumbnails/transparent2.ico">
     <link rel="stylesheet" href="cities.css">
+    <style>
+        .talisay {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,11 +43,13 @@
 
     <!-- LEFT: Talisay City -->
     <div class="city-card left">
-        <div class="city-card-header">
-            <div class="city-card-header-dots"></div>
-            <span class="city-badge">South</span>
-            <p class="city-name">Talisay City</p>
-        </div>
+        <a href="talisay-city-route.html" class="talisay">
+            <div class="city-card-header">
+                <div class="city-card-header-dots"></div>
+                <span class="city-badge">South</span>
+                <p class="city-name">Talisay City</p>
+            </div>
+        </a>
         <div class="city-card-body">
             <div class="routes-label">Jeepney Routes</div>
             <ul class="routes-list">
@@ -63,10 +70,10 @@
         <div class="city-card-body">
             <div class="routes-label">Jeepney Routes</div>
             <ul class="routes-list">
-                <li><span class="route-pill">O1K</span></li>
-                <li><span class="route-pill">03B</span></li>
-                <li><span class="route-pill">03L</span></li>
-                <li><span class="route-pill">03A</span></li>
+                <li><span class="route-pill"><a class = "pill-click" href = "choosen_jeepney_03b.html">O1K</a></span></li>
+                <li><span class="route-pill"><a class = "pill-click" href = "choosen_jeepney_03b.html">03B</a></span></li>
+                <li><span class="route-pill"><a class = "pill-click" href = "choosen_jeepney_03L.html">03L</a></span></li>
+                <li><span class="route-pill"><a class = "pill-click" href = "choosen_jeepney_03b.html">03A</a></span></li>
             </ul>
         </div>
     </div>

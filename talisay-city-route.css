@@ -14,6 +14,7 @@
     --gray-dark: #404040;
     --black: #171717;
     --shadow-card: 0 4px 24px rgba(0,0,0,0.10);
+    --shadow-orange: 0 4px 24px rgba(249, 115, 22, 0.25);
     --radius: 14px;
     --radius-sm: 8px;
     --header-h: 72px;
@@ -21,15 +22,16 @@
 
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; }
+html { scroll-behavior: smooth; }
+
+
 
 body {
+    margin: 0;
     min-height: 100vh;
     background: var(--off-white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Barlow';
     color: var(--black);
-    display: flex;
-    flex-direction: column;
 }
 
 /* ===== HEADER ===== */
@@ -42,7 +44,6 @@ header {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 3px solid var(--orange);
     box-shadow: 0 2px 20px rgba(249, 115, 22, 0.15);
-    flex-shrink: 0;
 }
 
 .header-container {
@@ -53,24 +54,6 @@ header {
     gap: 16px;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    height: var(--header-h);
-    padding: 0 32px;
-    gap: 16px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px 16px;
-    }
 }
 
 .logo-link {
@@ -145,7 +128,7 @@ header {
     /* clip-path: polygon(0 100%, 100% 30%, 100% 100%); */
 }
 
-/* .page-header-dots {
+.page-header-dots {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -153,7 +136,7 @@ header {
     background-size: 22px 22px;
     opacity: 0.6;
     pointer-events: none;
-} */
+}
 
 .page-header-inner {
     position: relative;
@@ -194,43 +177,115 @@ header {
     margin: 8px 0 0;
     font-weight: 500;
 }
-/* ===== MAP PANEL ===== */
-.map-section {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin: 32px auto;
-    padding: 0 16px;
-    max-width: 1030px;
-    border-radius: var(--radius);
-    background-color: rgb(255, 145, 0);
-    height: 100%;
-    box-shadow: 0 0 12px var(--shadow-card) var(--orange-glow);
+
+/* ===== JEEPNEY GRID ===== */
+main {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
 }
 
-.map-iframe {
-    border: none;
-    width: 100%;
-    height: 450px;
-    border-radius: var(--radius);
+.jeepneys-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
-.button_map {
-    margin-top: auto;
-    padding: auto;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--white);
-    background: var(--orange);
-    border: none;
-    border-radius: var(--radius-sm);
+.jeepney-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 20px 20px;
+    border: 2px solid transparent;
     cursor: pointer;
-    transition: background 0.18s, color 0.18s;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    animation: fadeUp 0.4s ease both;
+    position: relative;
+    overflow: hidden;
+    height: 100%;   /* reason of fix size height */
 }
-.button_map:hover {
-    box-shadow: 0 0 12px var(--orange-glow);
-    color: var(--white);
+
+/* orange accent top bar */
+.jeepney-box::before {
+    content: '';
+    position: absolute;
+
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
 }
+
+.jeepney-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(249, 115, 22, 0.2);
+    border-color: var(--orange-light);
+}
+
+.jeepney-box:hover::before { transform: scaleX(1); }
+.jeepney-box:active { transform: translateY(-2px); }
+
+.jeepney-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0 0 14px;
+    background: linear-gradient(135deg, #1a0800 0%, var(--orange-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.jeepney-route-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a3a3a3;
+    margin-bottom: 8px;
+}
+
+.jeepney-route {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.jeepney-route li {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    padding: 5px 0 5px 18px;
+    border-left: 2px solid var(--orange-light);
+    position: relative;
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.3;
+}
+
+.jeepney-route li::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 2px solid var(--white);
+}
+
+.jeepney-route li:first-child::before { background: #16a34a; }
+.jeepney-route li:last-child::before  { background: #16a34a; }
 
 /* ===== FOOTER ===== */
 footer {
@@ -239,7 +294,7 @@ footer {
     text-align: center;
     font-size: 13px;
     padding: 24px;
-    margin-top: auto;
+    margin-top: 16%;
 }
 
 footer span { color: var(--orange); font-weight: 600; }
@@ -249,6 +304,13 @@ footer span { color: var(--orange); font-weight: 600; }
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+.jeepney-box:nth-child(1) { animation-delay: 0.05s; }
+.jeepney-box:nth-child(2) { animation-delay: 0.10s; }
+.jeepney-box:nth-child(3) { animation-delay: 0.15s; }
+.jeepney-box:nth-child(4) { animation-delay: 0.20s; }
+.jeepney-box:nth-child(5) { animation-delay: 0.25s; }
+.jeepney-box:nth-child(6) { animation-delay: 0.30s; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
@@ -274,4 +336,9 @@ footer span { color: var(--orange); font-weight: 600; }
 
     .page-header { padding: 30px 16px 40px; }
     main { padding: 32px 16px 60px; }
+}
+
+@media (max-width: 560px) {
+    .jeepneys-container { grid-template-columns: 1fr; }
+    .jeepney-name { font-size: 28px; }
 }

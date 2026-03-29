@@ -25,12 +25,12 @@
     </div>
 </header>
 
-<!-- HERO + SEARCH -->
+<!--SEARCH -->
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-dots"></div>
     <div class="hero-content">
-        <div class="hero-badge">Cebu Public Transport Guide</div>
+        <!-- <div class="hero-badge">Cebu Public Transport Guide</div> -->
         <h1 class="hero-title">Find Your <span>Route</span></h1>
         <p class="hero-subtitle">Jeepney routes across Cebu City fast, simple, free.</p>
 
@@ -92,15 +92,21 @@
 </footer>
 
 <script>
+    function normalizeRoute(str) {
+        return str.toLowerCase().trim().replace(/\s+/g, "");
+    }
+
     function search() {
-        const from = document.getElementById("from").value.toLowerCase().trim();
-        const to = document.getElementById("to").value.toLowerCase().trim();
-        if (from === "talisay" && to === "cebu") {
-            window.location.href = "choosen_jeepney.html";
-        } else if (from === "cebu" && to === "talisay") {
+        const from = normalizeRoute(document.getElementById("from").value);
+        const to = normalizeRoute(document.getElementById("to").value);
+
+        // Support both directions (e.g. Talisay → Cebu or Cebu → Talisay)
+        if ((from === "mabololuyo" && to === "colon") || (from === "colon" && to === "mabololuyo")) {
+            window.location.href = "choosen_jeepney_03L.html";
+        } else if ((from === "cebu" && to === "talisay") || (from === "talisay" && to === "cebu")) {
             window.location.href = "page3.html";
         } else {
-            alert("Route not found. Try: Talisay → Cebu");
+            alert("Route not found. Try: Mabolo Luyo → Colon or Cebu → Talisay");
         }
     }
 

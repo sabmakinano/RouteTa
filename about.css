@@ -14,7 +14,6 @@
     --gray-dark: #404040;
     --black: #171717;
     --shadow-card: 0 4px 24px rgba(0,0,0,0.10);
-    --shadow-orange: 0 4px 24px rgba(249, 115, 22, 0.25);
     --radius: 14px;
     --radius-sm: 8px;
     --header-h: 72px;
@@ -31,7 +30,6 @@ body {
     font-family: 'Barlow', sans-serif;
     color: var(--black);
 }
-
 
 /* ===== HEADER ===== */
 header {
@@ -108,30 +106,32 @@ header {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #1a0800 0%, #7c2d12 100%);
-    min-height: 460px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 70px 20px 90px;
+    padding: 60px 20px 60px;
 }
 
 .hero-bg {
+    position: absolute;
     inset: 0;
+    background-image: url("thumbnails/back.png");
     background-size: cover;
     background-position: center;
     opacity: 0.25;
 }
 
-.hero::after {
-    content: '';
+/* .hero-dots {
     position: absolute;
-    bottom: -2px;
-    left: 0; right: 0;
-    height: 70px;
-    background: var(--off-white);
-    /* makes the diagonal cut at the bottom of the hero section */
-}
+    top: 0; right: 0;
+    width: 320px; height: 320px;
+    background-image: radial-gradient(circle, rgba(249,115,22,0.25) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity: 0.7;
+    pointer-events: none;
+} */
 
 .hero-content {
     position: relative;
@@ -139,11 +139,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    text-align: center;
 }
 
 .hero-badge {
-    font-family: 'Barlow Condensed';
+    font-family: 'Barlow Condensed', sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.22em;
@@ -159,10 +159,9 @@ header {
 
 .hero-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(36px, 7vw, 70px);
     font-weight: 800;
     color: var(--white);
-    text-align: center;
     line-height: 1;
     margin: 0 0 12px;
     text-shadow: 0 2px 30px rgba(0,0,0,0.5);
@@ -174,123 +173,16 @@ header {
 .hero-subtitle {
     font-size: 16px;
     color: rgba(255,255,255,0.72);
-    text-align: center;
-    margin: 0 0 42px;
+    margin: 0;
     font-weight: 500;
     animation: fadeUp 0.5s 0.15s ease both;
 }
 
-/* ===== SEARCH CARD ===== */
-.search-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 26px 28px 22px;
-    width: 100%;
-    max-width: 740px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.28), 0 0 0 1px rgba(249,115,22,0.1);
-    animation: fadeUp 0.5s 0.22s ease both;
-}
-
-.search-card-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #a3a3a3;
-    margin-bottom: 14px;
-}
-
-.search-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.search-input-wrap {
-    flex: 1;
-    min-width: 160px;
-    position: relative;
-}
-
-.input-icon {
-    position: absolute;
-    left: 13px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    line-height: 1;
-}
-
-.search-bar1,
-.search-bar2 {
-    width: 100%;
-    padding: 13px 13px 13px 40px;
-    font-size: 15px;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 600;
-    border: 2px solid var(--gray-mid);
-    border-radius: var(--radius-sm);
-    outline: none;
-    color: var(--black);
-    background: var(--gray-light);
-    transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
-}
-
-.search-bar1:focus,
-.search-bar2:focus {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px var(--orange-glow);
-    background: var(--white);
-}
-
-input::placeholder {
-    color: #a3a3a3;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.swap-icon {
-    font-size: 20px;
-    color: var(--orange);
-    flex-shrink: 0;
-    user-select: none;
-    font-weight: 700;
-}
-
-.button_route {
-    flex-shrink: 0;
-    padding: 13px 30px;
-    font-size: 14px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    background: var(--orange);
-    transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
-}
-
-.button_route:hover {
-    background: var(--orange-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 28px rgba(249, 115, 22, 0.45);
-}
-
-.button_route:active { transform: translateY(0); }
-
 /* ===== MAIN CONTENT AREA ===== */
 main .inner {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 48px 24px 0;
+    padding: 56px 24px 80px;
 }
 
 .section-tag {
@@ -312,63 +204,137 @@ main .inner {
     line-height: 1.1;
 }
 
-/* ===== STATS ROW ===== */
-.stats-row {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.stat-card {
-    flex: 1;
-    min-width: 130px;
+/* ===== ABOUT CARDS ===== */
+.about-card {
     background: var(--white);
     border-radius: var(--radius);
-    padding: 22px 20px;
-    border-left: 4px solid var(--orange);
+    padding: 36px 40px;
     box-shadow: var(--shadow-card);
+    border-left: 4px solid var(--orange);
+    margin-bottom: 24px;
     animation: fadeUp 0.5s ease both;
 }
 
-.stat-number {
+.about-card h3 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 44px;
+    font-size: 22px;
     font-weight: 800;
-    color: var(--orange);
-    line-height: 1;
+    color: var(--black);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-card h3 .icon {
+    font-size: 20px;
+}
+
+.about-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gray-dark);
+    margin: 0;
+}
+
+/* ===== TEAM SECTION ===== */
+.team-intro {
+    font-size: 15px;
+    color: var(--gray-dark);
+    line-height: 1.75;
+    margin: 0 0 8px;
+}
+
+.team-grid {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.team-card {
+    flex: 1;
+    min-width: 180px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    animation: fadeUp 0.5s ease both;
+    border-top: 3px solid var(--orange);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.team-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(249, 115, 22, 0.15);
+}
+
+.team-avatar1 {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed';
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0 auto 14px;
+}
+
+.team-avatar2 {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed';
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0 auto 14px;
+}
+
+.team-avatar3 {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed';
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0 auto 14px;
+}
+
+.team-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--black);
     margin-bottom: 4px;
 }
 
-.stat-label {
+.team-role {
     font-size: 12px;
     font-weight: 600;
-    color: var(--gray-dark);
+    color: var(--orange);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
 }
 
-/* ===== VIDEO ===== */
-.video-wrap {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-card);
-    border: 2px solid var(--orange-light);
-    width: 100%;
-    background: #ffffff;
-    /* aspect-ratio: 16/6; */
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    max-width: auto; /* Ensures the image never exceeds the container's width */
-    height: auto;
-}
-
-.video-wrap video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* ===== DIVIDER ===== */
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    border-radius: 2px;
+    margin: 48px 0;
+    opacity: 0.3;
 }
 
 /* ===== FOOTER ===== */
@@ -385,10 +351,8 @@ footer span { color: var(--orange); font-weight: 600; }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
-    from { 
-        opacity: 0; transform: translateY(16px); }
-    to   {
-         opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -405,48 +369,14 @@ footer span { color: var(--orange); font-weight: 600; }
         width: 100%;
         padding-bottom: 6px;
     }
-    .navbar a { 
-        font-size: 12px; padding: 6px 10px; 
-    }
-    .logoHeader { 
-        width: 34px; height: 34px; 
-    }
-    .headerTitle { 
-        height: 26px;
-    }
-
-    .search-row { 
-        flex-direction: column; 
-    }
-    .search-input-wrap {
-         width: 100%; min-width: unset; 
-        }
-    .search-bar1, .search-bar2 { 
-        width: 100%; 
-    }
-    .button_route { 
-        width: 100%; 
-    }
-    .swap-icon { 
-        display: none; 
-    }
-
-    .video-wrap {
-         aspect-ratio: 16/9; 
-        }
-    .stats-row { 
-        gap: 10px; 
-    }
+    .navbar a { font-size: 12px; padding: 6px 10px; }
+    .logoHeader { width: 34px; height: 34px; }
+    .headerTitle { height: 26px; }
+    .about-card { padding: 24px 20px; }
+    .team-grid { gap: 12px; }
 }
 
 @media (max-width: 480px) {
-    .hero { 
-        padding: 50px 16px 80px; 
-    }
-    .search-card {
-         padding: 18px 14px; border-radius: 14px;
-         }
-    main .inner {
-         padding: 32px 14px 0;
-         }
+    .hero { padding: 40px 16px; }
+    main .inner { padding: 32px 14px 60px; }
 }
